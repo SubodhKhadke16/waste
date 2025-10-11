@@ -1,0 +1,61 @@
+@import "tailwindcss";
+/* Fonts should be imported early for Turbopack resolution */
+@import "@fontsource/poppins/400.css";
+@import "@fontsource/poppins/600.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/600.css";
+
+/* Brand theme variables */
+:root {
+  --background: linear-gradient(to bottom, #0A1F16, #1B4332); /* dark eco gradient */
+  --surface: #142B23; /* darker card surface */
+  --foreground: #FFFFFF; /* primary text */
+  --muted: #D3D3D3; /* secondary text */
+  --brand-primary: #00C853; /* bright green */
+  --brand-accent: #FFD700; /* energy yellow */
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand-primary);
+  --color-accent: var(--brand-accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { /* keep light theme for now; no dark background */ }
+}
+
+/* Fonts loaded above */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+a { color: var(--brand-primary); }
+a:hover { text-shadow: 0 0 8px color-mix(in srgb, var(--brand-primary) 60%, transparent); }
+
+.btn { @apply inline-flex items-center justify-center rounded-lg px-5 py-2.5 font-semibold text-white shadow-sm transition; background: var(--brand-primary); box-shadow: 0 0 0 rgba(0,0,0,0); }
+.btn:hover { filter: brightness(1.05); box-shadow: 0 0 18px color-mix(in srgb, var(--brand-primary) 35%, transparent); }
+
+.container {
+  @apply mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Cards and helpers */
+.card { @apply rounded-2xl border bg-[var(--surface)] shadow-sm; border-color: rgba(255,255,255,0.06); }
+.card-pad { @apply p-6; }
+.muted { color: var(--muted); }
+.subtle { color: color-mix(in srgb, var(--muted) 85%, transparent); }
+.border-muted { border-color: rgba(255,255,255,0.08); }
+.bg-surface { background-color: var(--surface); }
