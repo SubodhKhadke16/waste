@@ -7,7 +7,7 @@ export default function ServicesPage() {
     { title: "Renewable Energy Workshops", desc: "Practical training for teams and students." },
   ];
   return (
-    <div className="container py-16 text-white">
+  <div className="container py-16 text-foreground">
       <h1 className="text-3xl font-semibold">Services</h1>
       <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {services.map((s) => (

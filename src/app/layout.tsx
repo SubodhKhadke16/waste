@@ -36,12 +36,54 @@ function Header() {
           <Link className="hover:text-[var(--brand-primary)]" href="/">Home</Link>
           <Link className="hover:text-[var(--brand-primary)]" href="/about">About</Link>
           <Link className="hover:text-[var(--brand-primary)]" href="/technology">Technology</Link>
-          <Link className="hover:text-[var(--brand-primary)]" href="/services">Services</Link>
+          
+          <DropDownNav label="Services">
+            <DropdownLink href="/services">All Services</DropdownLink>
+            <DropdownLink href="/services/consultancy">Consultancy</DropdownLink>
+            <DropdownLink href="/services/biocng">Bio-CNG Plant</DropdownLink>
+            <DropdownLink href="/services/biocoal">Bio-Coal Plant</DropdownLink>
+            <DropdownLink href="/services/coir">Coir Plant</DropdownLink>
+          </DropDownNav>
+          
+          <DropDownNav label="Products">
+            <DropdownLink href="/products/portable-biogas">Portable Biogas</DropdownLink>
+            <DropdownLink href="/products/briquette">Biomass Briquette</DropdownLink>
+            <DropdownLink href="/products/coir-products">Coir Products</DropdownLink>
+            <DropdownLink href="/products/organic-booster">Organic Booster</DropdownLink>
+          </DropDownNav>
+          
           <Link className="hover:text-[var(--brand-primary)]" href="/dashboard">Dashboard</Link>
           <Link className="hover:text-[var(--brand-primary)]" href="/contact">Contact</Link>
         </nav>
       </div>
     </header>
+  );
+}
+
+function DropDownNav({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="relative group">
+      <button className="text-[var(--brand-primary)] hover:text-[var(--brand-primary)] flex items-center gap-1">
+        {label}
+        <span className="text-xs">▼</span>
+      </button>
+      <div className="absolute top-full left-0 mt-1 w-56 bg-[var(--surface)] border border-muted rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+        <div className="py-2">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function DropdownLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link 
+      href={href} 
+      className="block px-4 py-2 text-sm hover:bg-black/20 hover:text-[var(--brand-primary)] transition-colors"
+    >
+      {children}
+    </Link>
   );
 }
 
